@@ -18,6 +18,30 @@ describe('canary-store', function() {
 
     res.value.should.eql('red');
   });
+  
+  it('should assign a false variant', function() {
+    store
+      .config('feature-1')
+      .assign('feature-1', false);
+
+    var res = createContext(store, function(get) {
+      return get('feature-1');
+    });
+
+    res.value.should.eql(false);
+  });
+  
+  it('should assign a true variant', function() {
+    store
+      .config('feature-1')
+      .assign('feature-1', true);
+
+    var res = createContext(store, function(get) {
+      return get('feature-1');
+    });
+
+    res.value.should.eql(true);
+  });
 
   it('should assign a dynamic variant', function(done) {
     var selected;
