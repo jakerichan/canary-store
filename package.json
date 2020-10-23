@@ -1,6 +1,6 @@
 {
   "name": "canary-flag-store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "feature flag store",
   "main": "index.js",
   "directories": {
