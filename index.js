@@ -35,7 +35,7 @@ function CanaryStore() {
   self._pending = 0;
 
   // create a global context for simple cases
-  var context = this._globalContext = this.context(this.emit.bind(this, 'change'));
+  var context = this._globalContext = this.context(this.emit.bind(this));
   this.get = context.get.bind(context);
   this.start = context.start.bind(context);
   this.stop = context.stop.bind(context);

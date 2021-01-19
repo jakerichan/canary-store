@@ -63,6 +63,25 @@ describe('canary-store', function() {
     });
   });
 
+  it('should trigger "change" event with feature and variant', function(done) {
+    var selected;
+
+    store.config('feature-1', ['red', 'blue', 'green'])
+
+    store.on('change', function(flag, variant) {
+      flag.should.eql('feature-1');
+      variant.should.eql('green');
+      done();
+    });
+
+    store.override('feature-1', 'green');
+    
+    createContext(store, function(get) {
+      return get('feature-1');
+    });
+
+  });
+
   it('should override an already assigned variant', function(done) {
     store
       .config('feature-1', ['red', 'blue', 'green'])
